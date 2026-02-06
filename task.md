@@ -24,3 +24,4 @@ The design should be "Premium", "Sporty", and "Dynamic".
     - `FacilitySection` (Highlighting quality).
     - `Footer`.
 5. [x] Assemble Homepage in `App.tsx`.
+6. [ ] Deploy to Vercel.

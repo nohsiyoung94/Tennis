@@ -14,7 +14,7 @@ const programs = [
     },
     {
         icon: <Zap className="w-8 h-8 text-tennis" />,
-        title: '매직 테니스 (키즈)',
+        title: '키즈 테니스',
         description: '아이들의 눈높이에 맞춘 특수 장비와 프로그램으로 쉽고 재미있게 테니스를 시작합니다.',
     },
     {
