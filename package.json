@@ -1,7 +1,6 @@
 {
   "name": "thesis-web",
   "private": true,
-  "homepage": "https://nohsiyoung94.github.io/Tennis",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
