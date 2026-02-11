@@ -10,8 +10,6 @@ import logoImg from '../image/흰배경.png';
 export default function Navbar() {
     // 스크롤 상태 감지 (투명 -> 솔리드 배경 전환용)
     const [isScrolled, setIsScrolled] = useState(false);
-    // 모바일 메뉴 열림/닫힘 상태 관리
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const location = useLocation();
 
     // 스크롤 이벤트 리스너: 50px 이상 스크롤 시 Navbar 스타일 변경
@@ -39,73 +37,41 @@ export default function Navbar() {
                 isScrolled || location.pathname !== '/' ? 'bg-forest/95 backdrop-blur-sm py-4 shadow-lg' : 'bg-transparent py-6'
             )}
         >
-            <div className="container mx-auto px-6 flex justify-between items-center">
+            <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
                 {/* Logo */}
                 <Link
                     to="/"
-                    className="flex items-center rounded-lg overflow-hidden"
+                    className="flex items-center rounded-lg overflow-hidden shrink-0"
                     onClick={() => {
                         window.scrollTo({ top: 0, behavior: 'smooth' });
-                        setIsMobileMenuOpen(false);
                     }}
                 >
                     <img
                         src={logoImg}
                         alt="RALLY TENNIS STUDIO"
-                        className="h-20 md:h-36 w-auto object-contain"
+                        className="h-16 md:h-36 w-auto object-contain"
                     />
                 </Link>
 
-                {/* Desktop Nav */}
-                <div className="hidden md:flex items-center space-x-8">
+                {/* Nav Links - 모바일에서도 동일하게 나열 */}
+                <div className="flex flex-wrap justify-center items-center gap-3 md:gap-8">
                     {navLinks.map((link) => (
                         <Link
                             key={link.name}
                             to={link.path}
-                            className="text-white text-sm font-medium hover:text-tennis transition-colors tracking-wide"
+                            className="text-white text-xs md:text-sm font-medium hover:text-tennis transition-colors tracking-wide whitespace-nowrap"
                         >
                             {link.name}
                         </Link>
                     ))}
                     <Link
                         to="/contact"
-                        className="bg-tennis text-forest font-bold px-6 py-2 rounded-full hover:bg-white transition-all transform hover:scale-105 active:scale-95"
+                        className="bg-tennis text-forest font-bold px-4 py-1.5 md:px-6 md:py-2 text-xs md:text-base rounded-full hover:bg-white transition-all transform hover:scale-105 active:scale-95 whitespace-nowrap"
                     >
                         1:1 상담문의
                     </Link>
                 </div>
-
-                {/* Mobile Menu Button */}
-                <button
-                    className="md:hidden text-white"
-                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                >
-                    {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-                </button>
             </div>
-
-            {/* Mobile Menu Overlay */}
-            {isMobileMenuOpen && (
-                <div className="absolute top-full left-0 w-full bg-forest p-6 flex flex-col space-y-4 md:hidden shadow-xl border-t border-forest-light">
-                    {navLinks.map((link) => (
-                        <Link
-                            key={link.name}
-                            to={link.path}
-                            className="text-left text-white text-lg font-medium hover:text-tennis"
-                            onClick={() => setIsMobileMenuOpen(false)}
-                        >
-                            {link.name}
-                        </Link>
-                    ))}
-                    <Link
-                        to="/contact"
-                        className="bg-tennis text-forest font-bold px-6 py-3 rounded-md w-full mt-4 text-center"
-                        onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                        1:1 상담문의
-                    </Link>
-                </div>
-            )}
         </nav>
     );
 }
