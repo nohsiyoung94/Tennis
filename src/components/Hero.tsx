@@ -4,7 +4,7 @@ import { ArrowRight } from 'lucide-react';
 
 export default function Hero() {
     return (
-        <section className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-forest-dark">
+        <section className="relative h-screen w-full overflow-hidden bg-forest-dark">
             {/* 배경 이미지 설정 및 오버레이 적용 */}
             <div className="absolute inset-0 z-0">
                 {/* 그라데이션 오버레이로 텍스트 가독성 확보 */}
@@ -17,7 +17,7 @@ export default function Hero() {
             </div>
 
             {/* 메인 컨텐츠 영역 */}
-            <div className="relative z-20 container mx-auto px-6 text-white pt-20">
+            <div className="relative z-20 container mx-auto px-6 text-white h-full flex flex-col justify-center pt-32 md:pt-0">
                 {/* 텍스트 등장 애니메이션 (투명도 0->1, Y축 이동) */}
                 <motion.div
                     initial={{ opacity: 0, y: 50 }}
@@ -28,7 +28,7 @@ export default function Hero() {
                     <h2 className="text-tennis font-display font-medium text-xl md:text-2xl mb-4 tracking-widest">
                         RALLY TENNIS STUDIO
                     </h2>
-                    <h1 className="font-display font-bold text-6xl md:text-8xl leading-none mb-8">
+                    <h1 className="font-display font-bold text-5xl md:text-8xl leading-tight mb-8">
                         도심 속 <br />
                         프리미엄 <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-tennis to-white">테니스 라운지</span>
