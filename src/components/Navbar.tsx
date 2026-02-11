@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { motion } from 'framer-motion';
 
 // lucide-react: 아이콘 라이브러리 사용
 
@@ -57,27 +56,23 @@ export default function Navbar() {
 
                 {/* Nav Links - 모바일에서도 동일하게 나열 */}
                 <div className="flex flex-wrap justify-center items-center gap-3 md:gap-8">
-                    <motion.h1
-                        initial={{ opacity: 50, y: 50 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="font-display text-4xl md:text-5xl font-bold mb-4"
-                    >
-                        {navLinks.map((link) => (
-                            <Link
-                                key={link.name}
-                                to={link.path}
-                                className="text-white text-xs md:text-sm font-medium hover:text-tennis transition-colors tracking-wide whitespace-nowrap"
-                            >
-                                {link.name}
-                            </Link>
-                        ))}
+
+                    {navLinks.map((link) => (
                         <Link
-                            to="/contact"
-                            className="bg-tennis text-forest font-bold px-4 py-1.5 md:px-6 md:py-2 text-xs md:text-base rounded-full hover:bg-white transition-all transform hover:scale-105 active:scale-95 whitespace-nowrap"
+                            key={link.name}
+                            to={link.path}
+                            className="text-white text-xs md:text-sm font-medium hover:text-tennis transition-colors tracking-wide whitespace-nowrap"
                         >
-                            1:1 상담문의
+                            {link.name}
                         </Link>
-                    </motion.h1>
+                    ))}
+                    <Link
+                        to="/contact"
+                        className="bg-tennis text-forest font-bold px-4 py-1.5 md:px-6 md:py-2 text-xs md:text-base rounded-full hover:bg-white transition-all transform hover:scale-105 active:scale-95 whitespace-nowrap"
+                    >
+                        1:1 상담문의
+                    </Link>
+
                 </div>
             </div>
         </nav>
