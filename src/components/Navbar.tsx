@@ -52,7 +52,7 @@ export default function Navbar() {
                     <img
                         src={logoImg}
                         alt="RALLY TENNIS STUDIO"
-                        className="h-36 w-auto object-contain"
+                        className="h-20 md:h-36 w-auto object-contain"
                     />
                 </Link>
 
