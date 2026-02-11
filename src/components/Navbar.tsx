@@ -1,11 +1,20 @@
 import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+// lucide-react: 아이콘 라이브러리 사용
 import { Menu, X } from 'lucide-react';
+// clsx & tailwind-merge: 조건부 클래스 결합을 위한 유틸리티 함수
 import { cn } from '../lib/utils';
+// 이미지 import
+import logoImg from '../image/흰배경.png';
 
 export default function Navbar() {
+    // 스크롤 상태 감지 (투명 -> 솔리드 배경 전환용)
     const [isScrolled, setIsScrolled] = useState(false);
+    // 모바일 메뉴 열림/닫힘 상태 관리
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const location = useLocation();
 
+    // 스크롤 이벤트 리스너: 50px 이상 스크롤 시 Navbar 스타일 변경
     useEffect(() => {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 50);
@@ -15,39 +24,55 @@ export default function Navbar() {
     }, []);
 
     const navLinks = [
-        { name: '아카데미 소개', href: '#' },
-        { name: '레슨 프로그램', href: '#' },
-        { name: '스크린 테니스', href: '#' },
-        { name: '커뮤니티', href: '#' },
+        { name: '아카데미 소개', path: '/about' },
+        { name: '레슨 프로그램', path: '/programs' },
+        { name: '강사 소개', path: '/instructors' },
+        { name: '위치 안내', path: '/location' },
+        { name: '시설 안내', path: '/location' },
     ];
+
 
     return (
         <nav
             className={cn(
                 'fixed w-full z-50 transition-all duration-300',
-                isScrolled ? 'bg-forest/95 backdrop-blur-sm py-4 shadow-lg' : 'bg-transparent py-6'
+                isScrolled || location.pathname !== '/' ? 'bg-forest/95 backdrop-blur-sm py-4 shadow-lg' : 'bg-transparent py-6'
             )}
         >
             <div className="container mx-auto px-6 flex justify-between items-center">
                 {/* Logo */}
-                <a href="#" className="font-display font-bold text-2xl tracking-tighter text-white">
-                    THESIS <span className="text-tennis">TENNIS</span>
-                </a>
+                <Link
+                    to="/"
+                    className="flex items-center rounded-lg overflow-hidden"
+                    onClick={() => {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                        setIsMobileMenuOpen(false);
+                    }}
+                >
+                    <img
+                        src={logoImg}
+                        alt="RALLY TENNIS STUDIO"
+                        className="h-36 w-auto object-contain"
+                    />
+                </Link>
 
                 {/* Desktop Nav */}
                 <div className="hidden md:flex items-center space-x-8">
                     {navLinks.map((link) => (
-                        <a
+                        <Link
                             key={link.name}
-                            href={link.href}
+                            to={link.path}
                             className="text-white text-sm font-medium hover:text-tennis transition-colors tracking-wide"
                         >
                             {link.name}
-                        </a>
+                        </Link>
                     ))}
-                    <button className="bg-tennis text-forest font-bold px-6 py-2 rounded-full hover:bg-white transition-all transform hover:scale-105 active:scale-95">
+                    <Link
+                        to="/contact"
+                        className="bg-tennis text-forest font-bold px-6 py-2 rounded-full hover:bg-white transition-all transform hover:scale-105 active:scale-95"
+                    >
                         1:1 상담문의
-                    </button>
+                    </Link>
                 </div>
 
                 {/* Mobile Menu Button */}
@@ -63,18 +88,22 @@ export default function Navbar() {
             {isMobileMenuOpen && (
                 <div className="absolute top-full left-0 w-full bg-forest p-6 flex flex-col space-y-4 md:hidden shadow-xl border-t border-forest-light">
                     {navLinks.map((link) => (
-                        <a
+                        <Link
                             key={link.name}
-                            href={link.href}
-                            className="text-white text-lg font-medium hover:text-tennis"
+                            to={link.path}
+                            className="text-left text-white text-lg font-medium hover:text-tennis"
                             onClick={() => setIsMobileMenuOpen(false)}
                         >
                             {link.name}
-                        </a>
+                        </Link>
                     ))}
-                    <button className="bg-tennis text-forest font-bold px-6 py-3 rounded-md w-full mt-4">
+                    <Link
+                        to="/contact"
+                        className="bg-tennis text-forest font-bold px-6 py-3 rounded-md w-full mt-4 text-center"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                    >
                         1:1 상담문의
-                    </button>
+                    </Link>
                 </div>
             )}
         </nav>

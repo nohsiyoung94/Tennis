@@ -26,7 +26,7 @@ const programs = [
 
 export default function Programs() {
     return (
-        <section className="py-24 bg-white">
+        <section className="py-24 bg-white" id="programs">
             <div className="container mx-auto px-6">
                 <div className="flex flex-col md:flex-row justify-between items-end mb-16">
                     <div>
@@ -42,13 +42,16 @@ export default function Programs() {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    {/* 프로그램 리스트 매핑 */}
                     {programs.map((program, index) => (
                         <motion.div
                             key={index}
+                            // 스크롤 시 순차적으로 나타나는 애니메이션 (stagger effect)
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
+                            // Hover 시 색상 반전 효과 (Tailwind Group Hover)
                             className="group p-8 border border-gray-100 bg-gray-50 hover:bg-forest hover:border-forest transition-all duration-300 rounded-none cursor-pointer"
                         >
                             <div className="mb-6 p-4 bg-white inline-block rounded-full group-hover:bg-tennis/20 group-hover:text-tennis transition-colors">
