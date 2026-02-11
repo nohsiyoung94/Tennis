@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 // lucide-react: 아이콘 라이브러리 사용
-import { Menu, X } from 'lucide-react';
+
 // clsx & tailwind-merge: 조건부 클래스 결합을 위한 유틸리티 함수
 import { cn } from '../lib/utils';
 // 이미지 import
