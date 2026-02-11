@@ -55,7 +55,7 @@ export default function Navbar() {
                 </Link>
 
                 {/* Nav Links - 모바일에서도 동일하게 나열 */}
-                <div className="bg-forest-dark pt-64 pb-20 text-white flex flex-wrap justify-center items-center gap-3 md:gap-8">
+                <div className="flex flex-wrap justify-center items-center gap-3 md:gap-8 pt-10">
 
                     {navLinks.map((link) => (
                         <Link
