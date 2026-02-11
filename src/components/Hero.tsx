@@ -17,7 +17,7 @@ export default function Hero() {
             </div>
 
             {/* 메인 컨텐츠 영역 */}
-            <div className="relative z-20 container mx-auto px-6 text-white h-full flex flex-col justify-center pt-64 md:pt-0">
+            <div className="relative z-20 container mx-auto px-6 text-white h-full flex flex-col justify-center pt-36 pb-24 md:pt-0 md:pb-0">
                 {/* 텍스트 등장 애니메이션 (투명도 0->1, Y축 이동) */}
                 <motion.div
                     initial={{ opacity: 0, y: 50 }}
@@ -28,7 +28,7 @@ export default function Hero() {
                     <h2 className="text-tennis font-display font-medium text-xl md:text-2xl mb-4 tracking-widest">
                         RALLY TENNIS STUDIO
                     </h2>
-                    <h1 className="font-display font-bold text-5xl md:text-8xl leading-tight mb-8">
+                    <h1 className="font-display font-bold text-5xl md:text-8xl leading-none mb-8">
                         도심 속 <br />
                         프리미엄 <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-tennis to-white">테니스 라운지</span>
@@ -40,10 +40,10 @@ export default function Hero() {
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-4">
-                        <button className="bg-tennis text-forest px-8 py-4 rounded-none font-bold text-lg flex items-center justify-center gap-2 hover:bg-white transition-all">
+                        <button className="bg-tennis text-forest w-full sm:w-auto px-8 py-4 rounded-none font-bold text-lg flex items-center justify-center gap-2 hover:bg-white transition-all">
                             상담 신청하기 <ArrowRight size={20} />
                         </button>
-                        <button className="border border-white text-white px-8 py-4 rounded-none font-bold text-lg hover:bg-white/10 transition-all">
+                        <button className="border border-white w-full sm:w-auto bg-white/5 backdrop-blur-sm text-white px-8 py-4 rounded-none font-bold text-lg hover:bg-white/10 transition-all">
                             프로그램 보기
                         </button>
                     </div>
