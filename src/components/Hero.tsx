@@ -17,7 +17,7 @@ export default function Hero() {
             </div>
 
             {/* 메인 컨텐츠 영역 */}
-            <div className="relative z-20 container mx-auto px-6 text-white h-full flex flex-col justify-center pt-32 md:pt-0">
+            <div className="relative z-20 container mx-auto px-6 text-white h-full flex flex-col justify-center pt-50 md:pt-0">
                 {/* 텍스트 등장 애니메이션 (투명도 0->1, Y축 이동) */}
                 <motion.div
                     initial={{ opacity: 0, y: 50 }}
